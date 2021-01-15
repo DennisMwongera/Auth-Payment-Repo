@@ -11,15 +11,13 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                    <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
 
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Magazine Issues</a>
 
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Your Issues</a>
 
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
-
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
+                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Report</a>
                     </div>
                 </div>
                 </div>
@@ -143,7 +141,44 @@
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <!-- Replace with your content -->
             <div class="px-4 py-6 sm:px-0">
-                <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+                <div class=""><!--border-4 border-dashed border-gray-200 rounded-lg h-96-->
+                    <!-- component -->
+                <!-- This is an example component -->
+
+                <div class="blogs__wraper py-20 px-20">
+     
+        <div class="flex justify-between items-center">
+ 
+                <div class="blogs bg-gray-200 mr-5">
+         <img src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="">
+         <div class="p-5">
+        <h1 class="text-2xl font-bold text-green-800 py-2">Lorem ipsum dolor sit amet</h1>
+         <p class=" text-sm text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis vitae qui distinctio ex soluta? Voluptates, ea! Esse, natus. Quas possimus laboriosam consectetur deserunt ea sapiente. Dicta ipsam atque voluptatem provident!</p>
+         <a href="" class="py-2 px-3 mt-4 px-6 text-white bg-green-500 inline-block rounded">Read More</a>
+         </div>
+                </div>
+
+
+                <div class="blogs bg-gray-200 mr-5">
+        <img src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="">
+        <div class="p-5">
+            <h1 class="text-2xl font-bold text-green-800 py-2">Lorem ipsum dolor sit amet</h1>
+        <p class=" text-sm text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis vitae qui distinctio ex soluta? Voluptates, ea! Esse, natus. Quas possimus laboriosam consectetur deserunt ea sapiente. Dicta ipsam atque voluptatem provident!</p>
+        <a href="" class="py-2 px-3 mt-4 px-6 text-white bg-green-500 inline-block rounded">Read More</a>
+        </div>
+                </div>
+
+                <div class="blogs bg-gray-200 mr-5">
+        <img src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="">
+        <div class="p-5">
+            <h1 class="text-2xl font-bold text-green-800 py-2">Lorem ipsum dolor sit amet</h1>
+        <p class=" text-sm text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis vitae qui distinctio ex soluta? Voluptates, ea! Esse, natus. Quas possimus laboriosam consectetur deserunt ea sapiente. Dicta ipsam atque voluptatem provident!</p>
+        <a href="" class="py-2 px-3 mt-4 px-6 text-white bg-green-500 inline-block rounded">Read More</a>
+        </div>
+                </div>
+    </div>
+    </div>
+                </div>
             </div>
             <!-- /End replace -->
             </div>
