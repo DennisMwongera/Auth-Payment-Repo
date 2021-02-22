@@ -3,148 +3,194 @@
         <div class="productview">
             <body class="antialiased">
 <div class="bg-white shadow-sm sticky top-0">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 md:py-4">
-    <div class="flex items-center justify-between md:justify-start">
-      <!-- Menu Trigger -->
-      <button type="button" class="md:hidden w-10 h-10 rounded-lg -ml-2 flex justify-center items-center">
-        <svg class="text-gray-500 w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      <!-- ./ Menu Trigger -->
+    <nav class="bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <img class="h-8 w-auto" src="../assets/img/logo top.png" alt="L99 Magazine">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                    <router-link to="/"><a href="#" class="text-gray-900 hover:bg-gray-900 focus:bg-gray-900 text-white hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a></router-link>
 
-      <a href="#" class="font-bold text-gray-700 text-2xl">Shop.</a>
-          <div class="flex items-center space-x-4">
-        <div class="relative hidden md:block">
-          <input type="search" class="pl-10 pr-2 h-10 py-1 rounded-lg border border-gray-200 focus:border-gray-300 focus:outline-none focus:shadow-inner leading-none" placeholder="Search">
-          <svg class="h-6 w-6 text-gray-300 ml-2 mt-2 stroke-current absolute top-0 left-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </div>
+                    <router-link to="/"><a href="#" class="text-gray-900 hover:bg-gray-700 focus:bg-gray-900 hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Contributors</a></router-link>
 
-        <a href="#" class="flex h-10 items-center px-2 rounded-lg border border-gray-200 hover:border-gray-300 focus:outline-none hover:shadow-inner">
-          <svg class="h-6 w-6 leading-none text-gray-300 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-          </svg>
-          <span class="pl-1 text-gray-500 text-md">0</span>
-        </a>
+                    <router-link to="/subscribe"><a href="#" class="text-gray-900 hover:bg-gray-700 focus:bg-gray-900 hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Latest Issues</a></router-link>
 
-        <button type="button" class="hidden md:block w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex justify-center items-center">
-          <img src="https://avatars.dicebear.com/api/bottts/2.svg" alt="bottts" width="28" height="28" class="rounded-lg mx-auto">
-        </button>
-      </div>
-    </div>
+                    <router-link to="/blog"><a href="#" class="text-gray-900 hover:bg-gray-700 focus:bg-gray-900 hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">News</a></router-link>
 
-    <!-- Search Mobile -->
-    <div class="relative md:hidden">
-      <input type="search" class="mt-1 w-full pl-10 pr-2 h-10 py-1 rounded-lg border border-gray-200 focus:border-gray-300 focus:outline-none focus:shadow-inner leading-none" placeholder="Search">
+                    <router-link to="/blog"><a href="#" class="text-gray-900 hover:bg-gray-700 focus:bg-gray-900 hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Stories</a></router-link>
+                    </div>
+                </div>
+                </div>
+                <div class="hidden md:block">
+                <div v-on:click="LoginTrue = true" class="ml-4 flex items-center md:ml-6 lg:ml-6">      
+                    <a href="#" class="text-white bg-red-600 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Subscribe</a>
+                    <!--  <router-link to="/signin"><a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign In</a></router-link> -->
+                </div>
+                </div>
+                <div class="-mr-2 flex md:hidden" @click="mobileMenu = true">
+                <!-- Mobile menu button -->
+                <button class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <span class="sr-only">Open main menu</span>
+                    <!--
+                    Heroicon name: menu
 
-      <svg class="h-6 w-6 text-gray-300 ml-2 mt-3 stroke-current absolute top-0 left-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    </div>
-    <!-- ./ Search Mobile -->
+                    Menu open: "hidden", Menu closed: "block"
+                    -->
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!--
+                    Heroicon name: x
 
-  </div>
-</div>
-
-<div class="py-6">
-  <!-- Breadcrumbs -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center space-x-2 text-gray-400 text-sm">
-      <a href="#" class="hover:underline hover:text-gray-600">Home</a>
-      <span>
-        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </span>
-      <a href="#" class="hover:underline hover:text-gray-600">Electronics</a>
-      <span>
-        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </span>
-      <span>Headphones</span>
-    </div>
-  </div>
-  <!-- ./ Breadcrumbs -->
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-    <div class="flex flex-col md:flex-row -mx-4">
-      <div class="md:flex-1 px-4">
-        <div x-data="{ image: 1 }" x-cloak>
-          <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
-            <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">1</span>
-            </div>
-
-            <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">2</span>
-            </div>
-
-            <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">3</span>
-            </div>
-
-            <div x-show="image === 4" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">4</span>
-            </div>
-          </div>
-
-          <div class="flex -mx-2 mb-4">
-            <template x-for="i in 4">
-              <div class="flex-1 px-2">
-                <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                  <span x-text="i" class="text-2xl"></span>
+                    Menu open: "block", Menu closed: "hidden"
+                    -->
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
-              </div>
-            </template>
-          </div>
-        </div>
-      </div>
-      <div class="md:flex-1 px-4">
-        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">Lorem ipsum dolor, sit amet consectetur, adipisicing elit.</h2>
-        <p class="text-gray-500 text-sm">By <a href="#" class="text-indigo-600 hover:underline">ABC Company</a></p>
+                </div>
+            </div>
+            </div>
 
-        <div class="flex items-center space-x-4 my-4">
-          <div>
-            <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-              <span class="text-indigo-400 mr-1 mt-1">$</span>
-              <span class="font-bold text-indigo-600 text-3xl">25</span>
+            <!--
+            Mobile menu, toggle classes based on menu state.
+
+            Open: "block", closed: "hidden"
+            -->
+            <div v-if="mobileMenu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contributers</a>
+
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Latest Issues</a>
+
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Stories</a>
+
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</a>
             </div>
           </div>
-          <div class="flex-1">
-            <p class="text-green-500 text-xl font-semibold">Save 12%</p>
-            <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
-          </div>
-        </div>
-
-        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis expedita cupiditate a est.</p>
-
-        <div class="flex py-4 space-x-4">
-          <div class="relative">
-            <div class="text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold">Qty</div>
-            <select class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-
-            <svg class="w-5 h-5 text-gray-400 absolute right-0 bottom-0 mb-2 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-            </svg>
-          </div>
-
-          <button type="button" class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white">
-            Add to Cart
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+        </nav>
 </div>
+<main class="flex-grow">
+      <div id="fb-root" class=" fb_reset"></div>
+          <!-- <div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div><div class="fb-customerchat fb_invisible_flow fb_iframe_widget" attribution="setup_tool" page_id="115455218485355" theme_color="#553C9A" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;attribution=setup_tool&amp;container_width=0&amp;local_state=%7B%22v%22%3A0%2C%22path%22%3A2%2C%22chatState%22%3A1%2C%22visibility%22%3A%22hidden%22%2C%22showUpgradePrompt%22%3A%22not_shown%22%7D&amp;locale=en_US&amp;page_id=115455218485355&amp;request_time=1612904152866&amp;sdk=joey&amp;theme_color=%23553C9A"><span style="vertical-align: bottom; width: 1000px; height: 0px;"><iframe name="f2e0106615ed37c" width="1000px" height="1000px" title="" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://web.facebook.com/v7.0/plugins/customerchat.php?app_id=&amp;attribution=setup_tool&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df1cb2572e629a44%26domain%3Depaper.parentsafrica.com%26origin%3Dhttps%253A%252F%252Fepaper.parentsafrica.com%252Ff99f286dc06204%26relation%3Dparent.parent&amp;container_width=0&amp;local_state=%7B%22v%22%3A0%2C%22path%22%3A2%2C%22chatState%22%3A1%2C%22visibility%22%3A%22hidden%22%2C%22showUpgradePrompt%22%3A%22not_shown%22%7D&amp;locale=en_US&amp;page_id=115455218485355&amp;request_time=1612904152866&amp;sdk=joey&amp;theme_color=%23553C9A" style="padding: 0px; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; width: 399px; max-height: 0px; background: none; bottom: 85px; right: 4px; margin-right: 12px; min-height: 0px;" class=" fb_customer_chat_bounce_out_v2" data-testid="dialog_iframe"></iframe></span></div><div class="fb_dialog  fb_dialog_advanced" style="overflow: visible; z-index: 2147483644;"><div class="fb_dialog_content"><iframe name="blank_f2e0106615ed37c" width="60px" tabindex="-1" data-testid="bubble_iframe" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://web.facebook.com/v7.0/plugins/customer_chat/bubble" style="margin: 0px 12px; padding: 0px; position: fixed; z-index: 2147483644; bottom: 24px; top: auto; height: 60px; width: 60px; border-radius: 29px; box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px; background: none; display: block; right: 12px;"></iframe><iframe name="unread_f2e0106615ed37c" tabindex="-1" data-testid="unread_iframe" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://web.facebook.com/v7.0/plugins/customer_chat/bubble" style="bottom: 68px; position: fixed; width: 20px; height: 24px; z-index: 2147483645; border-radius: 4pt; background: none; right: 22px;"></iframe></div></div></div> -->
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Replace with your content -->
+                <div class="border-b border-gray-300">
+        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
+            <div class="flex-none">
+                <img src="../assets/img/cover.png" alt="January 2021" class="w-64 lg:w-96">
+            </div>
+            <div class="md:ml-24">
+                <h2 class="text-4xl mt-4 md:mt-0 font-semibold">Feburuary 2021</h2>
+                <div class="flex flex-wrap items-center text-purple-800 text-sm mt-2">
+                    <span class="ml-1">Ken Ambani, Tausi, Dr. Edward Mungai, Miriam Komu, Cynthia Nyongesa</span>
+                    <span class="mx-2">|</span>
+                    <span>Issue No.: 001</span>
+                    <span class="mx-2">|</span>
+                    <span>Price: Ksh.220</span>
+                </div>
+
+                <p class="text-gray-700 mt-8 leading-5 tracking-wide">
+                    Difficulty on insensible reasonable in. From as went he they. Preference themselves me as thoroughly partiality considered on in estimating. 
+                    Middletons acceptance discovered projecting so is so or. In or attachment inquietude remarkably comparison at an. 
+                    Is surrounded prosperous stimulated am me discretion expression. But truth being state can she china widow. 
+                    Occasional preference fat remarkably now projecting uncommonly dissimilar. 
+                    Sentiments projection particular companions interested do at my delightful. Listening newspaper in advantage frankness to concluded unwilling.
+                </p>
+
+                
+
+                <div class="mt-12">
+
+                    <form action="https://epaper.parentsafrica.com/cart/16" method="POST">
+                        <input type="hidden" name="_token" value="xQFJOpWOXirhvBF2Kv0bSnDJKARYzaw8JSBAHtA8"> <button type="submit" class="flex inline-flex items-center bg-purple-900 text-white rounded font-bold px-5 py-4 hover:bg-purple-800 transition ease-in-out duration-150">
+                            <svg class="w-6 mr-2 fill-current" fill="none" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            <span>Buy Now</span>
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="border-b border-gray-100">
+        <div class="container mx-auto px-4 py-10">
+            <h2 class="text-2xl font-semibold">You may also like</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+
+                                    <div class="mt-8">
+                        <a href="/issues/february-2020">
+                            <img src="/img/covers/2020/02.jpg" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="mt-2">
+                            <a href="#" class="text-lg mt-2 hover:text-gray:300"></a>
+                            <div class="text-sm text-gray-400">
+                                February 2020
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="mt-8">
+                        <a href="/issues/august-2020">
+                            <img src="/img/covers/2020/08.jpg" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="mt-2">
+                            <a href="#" class="text-lg mt-2 hover:text-gray:300"></a>
+                            <div class="text-sm text-gray-400">
+                                August 2020
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="mt-8">
+                        <a href="/issues/december-2020">
+                            <img src="/img/covers/2020/12.jpg" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="mt-2">
+                            <a href="#" class="text-lg mt-2 hover:text-gray:300"></a>
+                            <div class="text-sm text-gray-400">
+                                December 2020
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="mt-8">
+                        <a href="/issues/october-2020">
+                            <img src="/img/covers/2020/10.jpg" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="mt-2">
+                            <a href="#" class="text-lg mt-2 hover:text-gray:300"></a>
+                            <div class="text-sm text-gray-400">
+                                October 2020
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="mt-8">
+                        <a href="/issues/december-2019">
+                            <img src="/img/covers/2019/12.jpg" alt="actor1" class="hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="mt-2">
+                            <a href="#" class="text-lg mt-2 hover:text-gray:300"></a>
+                            <div class="text-sm text-gray-400">
+                                December 2019
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>  -->
+
+        <!-- /End replace -->
+        </div>
+    </main>
+
   </body>
         </div>
     </html>
@@ -152,6 +198,11 @@
 
 <script>
 export default {
-    name: 'ProductView'
+    name: 'ProductView',
+    data() {
+        return {
+            mobileMenu: false
+        }
+    }
 }
 </script>

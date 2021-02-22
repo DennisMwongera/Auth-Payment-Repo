@@ -5,6 +5,8 @@ import Login from '@/components/Login.vue'
 import Subscribe from '@/components/Subscribe.vue'
 import Signin from '@/components/Signin.vue'
 import ProductView from '@/components/ProductView.vue'
+import BlogView from '@/components/BlogView.vue'
+import ReadBlog from '@/components/ReadBlog.vue'
 
 Vue.use(Router)
 
@@ -33,6 +35,16 @@ const constantRoutes = [
         path: '/productview',
         name: 'ProductView',
         component: ProductView
+    },
+    {
+        path: '/blog',
+        name: 'BlogView',
+        component: BlogView
+    },
+    {
+        path: '/blog_post',
+        name: 'ReadBlog',
+        component: ReadBlog
     }
 ]
 
