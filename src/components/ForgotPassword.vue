@@ -34,9 +34,9 @@
       </div>
 
       <div class="mt-6">
-        <a href="https://tailwindui.com/" class="block w-full text-center py-2 px-3 border border-gray-300 rounded-md text-gray-900 font-medium hover:border-gray-400 focus:outline-none focus:border-gray-400 sm:text-sm">
+        <router-link to="/signin"><a href="" class="block w-full text-center py-2 px-3 border border-gray-300 rounded-md text-gray-900 font-medium hover:border-gray-400 focus:outline-none focus:border-gray-400 sm:text-sm">
           Create Account
-        </a>
+        </a></router-link>
       </div>
     </div>
 

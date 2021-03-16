@@ -66,6 +66,8 @@
                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Stories</a>
 
                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</a>
+
+                  <a v-on:click="LoginTrue = true" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Subscribe</a>
             </div>
           </div>
         </nav>
@@ -75,22 +77,33 @@
 <!--Slide 1-->
 		<input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
 		<div class="carousel-item absolute opacity-0" style="height:80vh;">
-			<div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center bg-center bg-cover" style='background-image: url("https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80");'>Slide 1</div>
+			<div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center bg-center bg-cover">
+      <img class="w-full h-full object-cover sm:h-full md:h-full lg:w-full lg:h-full" src="@/assets/hero-img/1.png" alt="">
+      <!-- <img src="@/assets/hero-img/img-1.png" class="w-full object-cover" alt=""> -->
+      </div>
 		</div>
 		<label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
 		<label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>  
 <!--Slide 2-->
 		<input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
 		<div class="carousel-item absolute opacity-0" style="height:80vh;">
-			<div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center bg-center bg-cover" style='background-image: url("../assets/img/magazine-1");'>Slide 1</div>
+			<div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center bg-center bg-cover" style='background-image: url("../src/assets/hero-img/2.png");'>
+      <img class="w-full h-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="@/assets/hero-img/2.png" alt="">
+      <!-- <img src="@/assets/hero-img/img-2.png" class="w-full object-cover" alt=""> -->
+      </div>
 		</div>
 		<label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
 		<label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label> 
 <!--Slide 3-->
 		<input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
 		<div class="carousel-item absolute opacity-0" style="height:80vh;">
-			<div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center bg-center bg-cover" style='background-image: url("https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80");'>Slide 1</div>
+			<div class="block h-full w-full bg-indigo-500 text-white text-5xl text-center bg-center bg-cover" style='background-image: url("../src/assets/hero-img/3.png");'>
+      <img class="w-full h-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="@/assets/hero-img/3.png" alt="">
+      <!-- <img src="@/assets/hero-img/img-3.png" class="w-full object-cover" alt=""> -->
+      </div>
 		</div>
+  <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+		<label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
 
 		<!-- Add additional indicators for each slide-->
 		<ol class="carousel-indicators">
