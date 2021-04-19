@@ -120,7 +120,7 @@
     <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black flex justify-start" ></span> 
 </div>
     </div>
-    <h1 id="latest Issues" class="text-black font-semibold flex justify-center text-3xl">
+    <h1 id="latest Issues" class="mt-8 text-black font-semibold flex justify-center text-3xl">
                  Latest Issues
                 </h1>
       <div class="mx-auto py-2 sm:px-6 lg:px-8">
@@ -128,7 +128,7 @@
           <div class=""><!--border-4 border-dashed border-gray-200 rounded-lg h-96--> <!-- component --><!-- This is an example component -->
             <div class="">
              <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container px-5 py-8 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
     </div>
     <div class="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
@@ -333,7 +333,7 @@
 </template>
 
 <script>
-//  import axios from 'axios'
+// import axios from 'axios'
 import LoginModal from '../components/Modal/LoginModal.vue'
 import ImageModal from '../components/Modal/ImageModal'
 export default {

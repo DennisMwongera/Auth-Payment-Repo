@@ -108,26 +108,20 @@ export default {
   },
 
   methods: {
- login(){
-      const data = {
-          username: this.username,
-          password: this.password
-        }
-        this.errors = []
-        this.error = false
-        axios.post("https://jsonplaceholder.typicode.com/users", data)
-            .then(response => {
-            localStorage.setItem('token', response.data.token)
-            console.log('response')
-            console.log(data);
-            this.$router.push('/subscribe');
-            })
-          .catch(error => {
-            console.log(error)
-            this.error = true;
-            this.errors = error.response.data.error
-          })
-    },
+    login(){
+      const data = {username: this.username,password: this.password}
+      this.errors = []
+      this.error = false
+      axios.post("/login", data).then(response => {
+        localStorage.setItem('token', response.data.token)
+        localStorage.setItem('name', response.data.name)
+        this.$router.push('/subscribe');
+      }).catch(error => {
+        console.log(error)
+        this.error = true;
+      this.errors = error.response.data.error
+               })
+        },
          close() {
             this.$parent.LoginTrue = false
         }

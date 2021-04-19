@@ -78,36 +78,32 @@
     <!-- header ends here -->
 
     <main class="mt-10">
-
+      <div v-for="(blog, index) in blogs" :key="index" >
       <div class="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative" style="height: 24em;">
         <div class="absolute left-0 bottom-0 w-full h-full z-10"
           style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
-        <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" class="absolute left-0 top-0 w-full h-full z-0 object-cover" />
+        <img src="../assets/img/Blog-1.jpg" class="absolute left-0 top-0 w-full h-full z-0 object-cover" />
         <div class="p-4 absolute bottom-0 left-0 z-20">
           <a href="#"
-            class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">Nutrition</a>
+            class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">{{ blog.category}}</a>
           <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
-            Pellentesque a consectetur velit, ac molestie ipsum. Donec sodales, massa et auctor.
+           {{ blog.StoryTitle }}
           </h2>
           <div class="flex mt-3">
             <img src="https://randomuser.me/api/portraits/men/97.jpg"
               class="h-10 w-10 rounded-full mr-2 object-cover" />
             <div>
-              <p class="font-semibold text-gray-200 text-sm"> Mike Sullivan </p>
-              <p class="font-semibold text-gray-400 text-xs"> 14 Aug </p>
+              <p class="font-semibold text-gray-200 text-sm"> {{ blog.author }} </p>
+              <p class="font-semibold text-gray-400 text-xs"> {{ blog.published }} </p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-        <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-          justice. Six draw
-          you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-          resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-          outlived peculiar rendered led six.</p>
+        <p class="pb-6">{{ blog.body }}</p>
 
-        <p class="pb-6">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as
+        <!-- <p class="pb-6">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as
           thoroughly
           partiality considered on in estimating. Middletons acceptance discovered projecting so is so or. In or
           attachment inquietude remarkably comparison at an. Is surrounded prosperous stimulated am me discretion
@@ -159,8 +155,9 @@
           make two real
           miss use easy. Celebrated delightful an especially increasing instrument am. Indulgence contrasted sufficient
           to unpleasant in in insensible favourable. Latter remark hunted enough vulgar say man. Sitting hearted on it
-          without me.</p>
+          without me.</p> -->
 
+      </div>
       </div>
     </main>
     <!-- main ends here -->
@@ -193,3 +190,33 @@
   </div>
     </html>
 </template>
+
+<script>
+import axios from 'axios'
+export default {
+  name: 'ReadBlog',
+  components: {
+  },
+  data(){
+    return{
+    blogs: [],
+    errors: [],
+    mobileMenu: false
+    }
+  },
+    // Fetches posts when the component is created.
+  created() {
+    axios
+      .get('http://127.0.0.1:8000/api/blogs')
+      .then((res) => {
+        // JSON responses are automatically parsed.
+        this.blogs = res.data;
+        console.log('endpoint working')
+      })
+      .catch((e) => {
+        this.errors.push(e);
+      });
+  }
+ 
+}
+</script>

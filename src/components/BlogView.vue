@@ -97,10 +97,10 @@
                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Travel</a>
             </div>
     </div>
-    <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-      <div v-for="blog in blogs" :key="blog"  class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+    <div class="mt-12 max-w-md mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
+      <div v-for="(blog, index) in blogs" :key="index" class="flex flex-col rounded-lg shadow-lg overflow-hidden">
         <div class="flex-shrink-0">
-          <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+          <img class="h-48 w-full object-cover" src="../assets/img/Blog-1.jpg" alt="">
         </div>
         <div class="flex-1 bg-white p-6 flex flex-col justify-between">
           <div class="flex-1 justify-start">
@@ -111,10 +111,10 @@
             </p>
             <router-link to="/blog_post"><a href="#" class="block mt-2 text-left">
               <p class="text-left text-xl font-semibold text-gray-900">
-                {{ blog.title }}
+                {{ blog.StoryTitle }}
               </p>
               <p class="mt-3 text-base text-gray-500">
-               {{ blog.describtion }}
+               {{ blog.body }}
               </p>
             </a></router-link>
           </div>
@@ -128,12 +128,12 @@
             <div class="ml-3">
               <p class="text-left text-sm font-medium text-gray-900">
                 <a href="#" class="hover:underline">
-                 {{ blog.writer }}
+                 {{ blog.author }}
                 </a>
               </p>
               <div class="flex space-x-1 text-sm text-gray-500">
                 <time datetime="2020-03-16">
-                  {{ blog.postdate}}
+                  {{ blog.published}}
                 </time>
                 <span aria-hidden="true">
                   &middot;
@@ -168,15 +168,16 @@ export default {
     // Fetches posts when the component is created.
   created() {
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
-      .then((response) => {
+      .get('http://127.0.0.1:8000/api/stories')
+      .then((res) => {
         // JSON responses are automatically parsed.
-        this.blogs = response.data.data;
+        this.blogs = res.data;
+        console.log('endpoint working')
       })
       .catch((e) => {
         this.errors.push(e);
       });
-  },
+  }
  
 }
 </script>

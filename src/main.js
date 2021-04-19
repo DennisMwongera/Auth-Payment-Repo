@@ -9,6 +9,10 @@ import { store } from './store/store'
  
 // defalut install
 
+//Forms Validation
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
 
 //Axios
 Vue.use(VueAxios, axios)
