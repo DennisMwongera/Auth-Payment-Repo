@@ -90,7 +90,7 @@
             <div class="md:ml-24">
                 <h2 class="text-4xl mt-4 md:mt-0 font-semibold">Feburuary 2021</h2>
                 <div class="flex flex-wrap items-center text-purple-800 text-sm mt-2">
-                    <span class="ml-1">Ken Ambani, Tausi, Dr. Edward Mungai, Miriam Komu, Cynthia Nyongesa</span>
+                    <span class="ml-1">Naphtali Budamba, John Doe, Jane Doe, Mary Jane, Sam Smith</span>
                     <span class="mx-2">|</span>
                     <span>Issue No.: 001</span>
                     <span class="mx-2">|</span>

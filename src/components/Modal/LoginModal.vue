@@ -45,8 +45,8 @@
          <form class="mt-8 space-y-6" >
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
-              <label for="username" class="sr-only">UserName</label>
-              <input v-model="username" id="username" name="username" type="text" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+              <label for="username" class="sr-only">Email</label>
+              <input v-model="email" id="email" name="email" type="text" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
@@ -95,12 +95,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   name: 'Modal',
   data() {
     return{
-      username: '',
+      email: '',
       password: '',
       error: false,
       errors:[],
@@ -109,18 +109,19 @@ export default {
 
   methods: {
     login(){
-      const data = {username: this.username,password: this.password}
-      this.errors = []
-      this.error = false
-      axios.post("/login", data).then(response => {
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('name', response.data.name)
-        this.$router.push('/subscribe');
-      }).catch(error => {
-        console.log(error)
-        this.error = true;
-      this.errors = error.response.data.error
-               })
+       this.$router.push("/subscribe")
+      // const data = {email: this.email,password: this.password}
+      // this.errors = []
+      // this.error = false
+      // axios.post("http://127.0.0.1:8000/api/signin", data).then(response => {
+      //   localStorage.setItem('token', response.data.token)
+       
+      //   console.log(response)
+      // }).catch(error => {
+      //   console.log(error)
+      //   this.error = true;
+      // this.errors = error.response.data.error
+      //          })
         },
          close() {
             this.$parent.LoginTrue = false
