@@ -24,12 +24,16 @@ module.exports = {
      * then publicPath should be set to "/bar/".
      * In most cases please use '/' !!!
      * Detail: https://cli.vuejs.org/config/#publicpath
+     * 
      */
-    publicPath: '/',
+    
+     publicPath: process.env.NODE_ENV === 'production'
+    ? '/'
+    : '/',
     outputDir: 'dist',
     assetsDir: 'assets',
     lintOnSave: process.env.NODE_ENV === 'development',
-    productionSourceMap: false,
+    productionSourceMap: true,
     devServer: {
       port: port,
       open: true,

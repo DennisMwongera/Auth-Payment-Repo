@@ -5,6 +5,7 @@ import router from './router.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { store } from './store/store'
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
  
 // defalut install
@@ -12,6 +13,10 @@ import { store } from './store/store'
 //Forms Validation
 import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
+
+//slider 
+import VueSplide from '@splidejs/vue-splide';
+Vue.use( VueSplide );
 
 
 //Axios

@@ -3,9 +3,9 @@
   <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <div>
-          <img class="mx-auto h-8 w-auto" src="@/assets/img/logo top.png" alt="L99 Magazine">
+          <router-link to="/"><img class="mx-auto h-8 w-auto" src="@/assets/img/logo top.png" alt="L99 Magazine"></router-link>
           <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
+            Sign Up to your account
           </h2>
         </div>
   </div>
