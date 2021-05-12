@@ -2,21 +2,27 @@
   <div class="hello">
     <div class="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full space-y-8">
-        <div>
-          <img class="mx-auto h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+          <div>
+          <router-link to="/"><img class="mx-auto h-8 w-auto" src="@/assets/img/logo top.png" alt="L99 Magazine"></router-link>
           <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>
         </div>
-        <form class="mt-8 space-y-6" >
+       <form class="mt-8 space-y-6" >
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
-              <label for="username" class="sr-only">UserName</label>
-              <input v-model="username" id="username" name="username" type="text" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+              <label for="username" class="sr-only">Email</label>
+              <input v-model="form.email" id="email" name="email" type="text" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+            <span class="text-danger" v-if="errors.email">
+            {{ errors.email[0] }}
+          </span>
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
-              <input v-model="password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+              <input v-model="form.password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+            <span class="text-danger" v-if="errors.password">
+            {{ errors.password[0] }}
+          </span>
             </div>
           </div>
 
@@ -29,14 +35,14 @@
             </div>
 
             <div class="text-sm">
-              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+              <router-link to="/resetpass"><a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
                 Forgot your password?
-              </a>
+              </a></router-link>
             </div>
           </div>
 
           <div>
-            <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="login">
+            <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click.prevent="login">
               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                 <!-- Heroicon name: lock-closed -->
                 <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -109,48 +115,37 @@
 </template>
 
 <script>
+import User from "@/apis/User.js";
+
 export default {
-  name: 'Login',
   data() {
-    return{
-      username: '',
-      password: ''
-    }
+    return {
+      form: {
+        email: "",
+        password: ""
+      },
+      errors: []
+    };
   },
 
- methods: {
-    // handleSubmit() {
-    //   const data = {
-    //       username: this.username,
-    //       password: this.password
-    //     };
-    //     console.log(data);
-    //   },
-    login(){
-      const data = {
-          username: this.username,
-          password: this.password
-        };
-        console.log(data);
-    }
+  methods: {
+    login() {
+      User.login(this.form)
+        .then(() => {
+          this.$root.$emit("login", true);
+          localStorage.setItem("auth", "true");
+          this.$router.push({ name: "Subscribe" });
+        })
+        .catch(error => {
+          if (error.response.status === 422) {
+            this.errors = error.response.data.errors;
+          }
+        });
+    },
+        close() {
+            this.$parent.LoginTrue = false
+        }   
   }
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

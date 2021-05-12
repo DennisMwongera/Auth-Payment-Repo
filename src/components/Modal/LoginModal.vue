@@ -46,11 +46,17 @@
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
               <label for="username" class="sr-only">Email</label>
-              <input v-model="email" id="email" name="email" type="text" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+              <input v-model="form.email" id="email" name="email" type="text" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+            <span class="text-danger" v-if="errors.email">
+            {{ errors.email[0] }}
+          </span>
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
-              <input v-model="password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+              <input v-model="form.password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+            <span class="text-danger" v-if="errors.password">
+            {{ errors.password[0] }}
+          </span>
             </div>
           </div>
 
@@ -70,7 +76,7 @@
           </div>
 
           <div>
-            <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="login">
+            <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-800 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click.prevent="login">
               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                 <!-- Heroicon name: lock-closed -->
                 <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -95,37 +101,36 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import User from "@/apis/User.js";
+
 export default {
-  name: 'Modal',
   data() {
-    return{
-      email: '',
-      password: '',
-      error: false,
-      errors:[],
-    }
+    return {
+      form: {
+        email: "",
+        password: ""
+      },
+      errors: []
+    };
   },
 
   methods: {
-    login(){
-       this.$router.push("/subscribe")
-      // const data = {email: this.email,password: this.password}
-      // this.errors = []
-      // this.error = false
-      // axios.post("http://127.0.0.1:8000/api/signin", data).then(response => {
-      //   localStorage.setItem('token', response.data.token)
-       
-      //   console.log(response)
-      // }).catch(error => {
-      //   console.log(error)
-      //   this.error = true;
-      // this.errors = error.response.data.error
-      //          })
-        },
-         close() {
+    login() {
+      User.login(this.form)
+        .then(() => {
+          this.$root.$emit("login", true);
+          localStorage.setItem("auth", "true");
+          this.$router.push({ name: "Subscribe" });
+        })
+        .catch(error => {
+          if (error.response.status === 422) {
+            this.errors = error.response.data.errors;
+          }
+        });
+    },
+        close() {
             this.$parent.LoginTrue = false
-        }
+        }   
   }
-}
+};
 </script>

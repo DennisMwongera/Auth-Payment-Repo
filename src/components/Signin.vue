@@ -15,30 +15,36 @@
       <form class="space-y-6">
         <div>
           <div class="mt-1">
-            <input v-model="user.firstName"   id="firstname" name="firstname" type="name" autocomplete="name" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="FirstName">
+            <input v-model="form.name"   id="name" name="name" type="name" autocomplete="name" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Name">
+             <span class="text-danger" v-if="errors.name">
+            {{ errors.name[0] }}
+          </span>
           </div>
         </div>
           <div>
           <div class="mt-1">
-            <input v-model="user.lastName"  id="lastname" name="lastname" type="name" autocomplete="name" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="LastName">
+            <input v-model="form.email"  id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Email">
+           <span class="text-danger" v-if="errors.email">
+            {{ errors.email[0] }}
+          </span>
           </div>
         </div>
         <div>
           <div class="mt-1">
-            <input v-model="user.email"  id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Email">
+            <input v-model="form.password"  id="password" name="password" type="password" autocomplete="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Password">
+           <span class="text-danger" v-if="errors.password">
+            {{ errors.password[0] }}
+          </span>
           </div>
         </div>
              <div>
           <div class="mt-1">
-            <input v-model="user.gender"  id="gender" name="gender" type="gender" autocomplete="gender" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Gender">
+            <input v-model="form.password_confirmation"  id="password_confirmation" name="password_confirmation" type="password" autocomplete="password_confirmation" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Re-Enter Password">
+               <span class="text-danger" v-if="errors.password_confirmation">
+            {{ errors.password_confirmation[0] }}
+          </span>
           </div>
         </div>
-        <div>
-          <div class="mt-1">
-            <input v-model="user.password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Password">
-          </div>
-        </div>
-
         <div class="flex items-center justify-between">
           <div class="flex items-center">
             <input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
@@ -55,24 +61,11 @@
         </div>
 
         <div>
-          <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleSubmit">
+          <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click.prevent="register">
             Sign in
           </button>
         </div>
       </form>
-
-<!-- <form @submit.prevent="submit">
-  <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
-    <label class="form__label">Name</label>
-    <input  v-model.trim="$v.name.$model" id="firstname" name="firstname" type="name" autocomplete="name" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="FirstName"/>
-  </div>
-  <div class="error" v-if="!$v.name.required">Name is required</div>
-  <div class="error" v-if="!$v.name.minLength">Name must have at least {{$v.name.$params.minLength.min}} letters.</div>
-  <button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit" :disabled="submitStatus === 'PENDING'">Submit!</button>
-  <p class="typo__p" v-if="submitStatus === 'OK'">Thanks for your submission!</p>
-  <p class="typo__p" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
-  <p class="typo__p" v-if="submitStatus === 'PENDING'">Sending...</p>
-</form> -->
       <div class="mt-6">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
@@ -121,56 +114,34 @@
 </template>
 
 <script>
-import { required, minLength } from 'vuelidate/lib/validators'
-import axios from 'axios'
+import User from "@/apis/User.js";
+
 export default {
   data() {
     return {
-       user :  { 
-          firstName:"",
-          lastName:"",
-          email:"",
-          gender:"",
-          password:""
-       }
-    }
+      form: {
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+      },
+      errors: []
+    };
   },
-  validations: {
-    name: {
-      required,
-      minLength: minLength(4)
-    }
-  },
-  methods: {
-    handleSubmit() {
-      let payload = {
-        "firstName": this.user.firstName,
-        "lastName":this.user.lastName,
-        "email":this.user.email,
-        "gender": this.user.gender,
-        "password": this.user.password
-      }
-      console.log(payload)
 
-      axios.post("http://127.0.0.1:8000/api/create-user", payload).then(res => {
-        console.log(res)
-        console.log(payload)
-      }).catch(err =>  {
-        console.log(err)
-      })
-     //before sending to BK
-      this.$v.$touch()
-      if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR'
-      } else {
-        // do your submit logic here
-        this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          this.submitStatus = 'OK'
-        }, 500)
-      }
+  methods: {
+    register() {
+      User.register(this.form)
+        .then(() => {
+          this.$router.push({ name: "Subscribe" });
+        })
+        .catch(error => {
+          if (error.response.status === 422) {
+            this.errors = error.response.data.errors;
+          }
+        });
     }
   }
-}
+};
 </script>
           

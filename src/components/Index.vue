@@ -2,76 +2,9 @@
 <html>
 <div>
  <main>
-   <LoginModal v-if="LoginTrue" class="z-20 absolute" />
    <ImageModal v-if ="showImage" />
     <div class="z-10 fixed w-full">
-        <nav class="bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                <div class="flex-shrink-0">
-                   <router-link to="/"><img class="h-8 w-auto" src="../assets/img/logo top.png" alt="L99 Magazine"></router-link>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <router-link to="/"><a href="#" class="text-gray-900 hover:bg-gray-900 focus:bg-gray-900 text-white hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a></router-link>
-
-                    <a href="#contributers" class="text-gray-900 hover:bg-gray-700 focus:bg-gray-900 hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Contributors</a>
-
-                    <router-link to="/"><a href="#latest Issues" class="text-gray-900 hover:bg-gray-700 focus:bg-gray-900 hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Latest Issues</a></router-link>
-
-                    <router-link to="/blog"><a href="#" class="text-gray-900 hover:bg-gray-700 focus:bg-gray-900 hover:text-white focus:text-white px-3 py-2 rounded-md text-sm font-medium">Stories</a></router-link>
-                    </div>
-                </div>
-                </div>
-                <div class="hidden md:block">
-                <div class="ml-4 flex items-center md:ml-6 lg:ml-6"> 
-                  <div class="guest" data-toggle="modal" data-target="#md-login">
-                          <span v-on:click="LoginTrue = true" class="cursor-pointer font-normal px-2 bg-teal-200">Sign In </span>
-                          <span>or </span>
-                          <router-link to="/signin"><span class="px-2 font-normal"> Sign Up</span></router-link>
-                  </div>
-                    <!-- <a v-on:click="LoginTrue = true" href="#" class="text-white bg-red-600 hover:bg-red-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Subscribe</a> -->
-                    <!--  <router-link to="/signin"><a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign In</a></router-link> -->
-                </div>
-                </div>
-                   <div class="-mr-2 flex md:hidden" >
-          <!-- Mobile menu button -->
-          <button v-if="menuBtn" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" v-on:click="showMenu">
-            <span class="sr-only">Open main menu</span>
-            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-            <button v-if="closeBtn" v-on:click="close" class="flex justify-end"><svg class="z-20 mt-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="24px" height="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
-        </div>
-            </div>
-            </div>
-
-            <!--
-            Mobile menu, toggle classes based on menu state.
-
-            Open: "block", closed: "hidden"
-            -->
-            <div v-if="mobileMenu" class="md:hidden absolute z-20 w-full bg-red-800">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <router-link to="/"><a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a></router-link>
-
-                <router-link to="/"><a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contributers</a></router-link>
-
-                <router-link to="/"><a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Latest Issues</a></router-link>
-
-                <router-link to="/blog"><a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Stories</a></router-link>
-
-                  <a v-on:click="LoginTrue = true" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Subscribe</a>
-            </div>
-          </div>
-        </nav>
+      <Navigation />
     </div>
     <div class="carousel shadow-2xl bg-white w-full">
 <div class="carousel-inner relative overflow-hidden w-full">
@@ -160,28 +93,43 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-wrap">
-            <div class="w-full flex justify-center">
-              <splide :options="options">
-                <splide-slide>
-                  <img src="../assets/img/con-1.jpg">
-                </splide-slide>
-                <splide-slide>
-                  <img src="../assets/img/con-2.png">
-                </splide-slide>
-                <splide-slide>
-                  <img src="../assets/img/con-1.jpg">
-                </splide-slide>
-                <splide-slide>
-                  <img src="../assets/img/con-4.jpg">
-                </splide-slide>
-                <splide-slide>
-                  <img src="../assets/img/con-1.jpg">
-                </splide-slide>
-                <splide-slide>
-                  <img src="../assets/img/con-2.png">
-                </splide-slide>
-              </splide>
+          <div class="">
+            <div class="max-w-7xl mx-auto py-4 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
+              <div class="space-y-12">
+                <ul class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
+                  <li v-for="person in people" :key="person.name">
+                    <div class="space-y-6">
+                      <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56" :src="person.imageUrl" alt="" />
+                      <div class="space-y-2">
+                        <div class="text-lg leading-6 font-medium space-y-1">
+                          <h3>{{ person.name }}</h3>
+                          <p class="text-indigo-600">{{ person.role }}</p>
+                        </div>
+                        <ul class="flex justify-center space-x-5">
+                          <li>
+                            <a :href="person.twitterUrl" class="text-gray-400 hover:text-gray-500">
+                              <span class="sr-only">Twitter</span>
+                              <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                              </svg>
+                            </a>
+                          </li>
+                          <li>
+                            <a :href="person.linkedinUrl" class="text-gray-400 hover:text-gray-500">
+                              <span class="sr-only">LinkedIn</span>
+                              <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                              </svg>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <label  class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+		<label  class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label> 
+              </div>
             </div>
           </div> 
         </div>
@@ -256,13 +204,13 @@
 </template>
 
 <script>
-// import axios from 'axios'
-import LoginModal from '../components/Modal/LoginModal.vue'
+import User from "@/apis/User.js";
+import Navigation from "../components/Elements/Navigation.vue"
 import ImageModal from '../components/Modal/ImageModal'
 export default {
   name: 'Index',
   components: {
-    LoginModal,
+    Navigation,
     ImageModal
   },
   data(){
@@ -281,15 +229,24 @@ export default {
           date: 'Feburuary, 2020',
         }
       ],
-         options: {
-          rewind : true,
-          width  : 800,
-          gap    : '3rem',
-          type   : 'loop',
-	perPage: 3,
-	perMove: 1,
+         people : [
+          {
+          name: 'Whitney Francis',
+          role: 'Copywriter',
+          imageUrl: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+          twitterUrl: '#',
+          linkedinUrl: '#',
         }
+         ],
+        isLoggedIn: false
     }
+  },
+    mounted() {
+    this.$root.$on("login", () => {
+      this.isLoggedIn = true;
+    });
+
+    this.isLoggedIn = !!localStorage.getItem("auth");
   },
      methods: {
         showMenu() {
@@ -300,6 +257,13 @@ export default {
         imgShow() {
             this.showImage = true
         },
+          logout() {
+      User.logout().then(() => {
+        localStorage.removeItem("auth");
+        this.isLoggedIn = false;
+        this.$router.push({ name: "Home" });
+      });
+    },
         close() {
           this.menuBtn = true
           this.closeBtn = false

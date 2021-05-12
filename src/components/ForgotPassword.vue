@@ -12,12 +12,12 @@
 
     <form class="mt-5" action="https://tailwindui.com/password/email" method="POST">
       <input type="hidden" name="_token" value="BzrSBBxFPpOrn1TfR8g1VWzJkGmSRujPF7ePviJC">      <div class="rounded-md shadow-sm">
-        <input aria-label="Email address" name="email" type="email" required="" autofocus="" class="border-gray-300 placeholder-gray-500 focus:shadow-outline-blue focus:border-blue-300  appearance-none relative block w-full px-3 py-2 border text-gray-900 rounded-md focus:outline-none sm:text-sm" placeholder="Email address" value="">
+        <input v-model="form.email" aria-label="Email address" name="email" type="email" required="" autofocus="" class="border-gray-300 placeholder-gray-500 focus:shadow-outline-blue focus:border-blue-300  appearance-none relative block w-full px-3 py-2 border text-gray-900 rounded-md focus:outline-none sm:text-sm" placeholder="Email address" value="">
       </div>
 
       
       <div class="mt-5">
-        <button type="submit" class="relative block w-full py-2 px-3 border border-transparent rounded-md text-white font-semibold bg-gray-800 hover:bg-gray-700 focus:bg-gray-900 focus:outline-none focus:shadow-outline sm:text-sm">
+        <button type="submit" class="relative block w-full py-2 px-3 border border-transparent rounded-md text-white font-semibold bg-gray-800 hover:bg-gray-700 focus:bg-gray-900 focus:outline-none focus:shadow-outline sm:text-sm" @click.prevent="reset">
           Send password reset email
         </button>
       </div>
@@ -46,7 +46,36 @@
 </template>
 
 <script>
+import User from "@/apis/User.js";
 export default {
-    name: 'ForgotPassword'
+    name: 'ForgotPassword',
+      data() {
+    return {
+      form: {
+        email: ""
+      },
+      errors: []
+    };
+  },
+
+  methods: {
+    reset() {
+      User.login(this.form)
+        .then(() => {
+          this.$root.$emit("password/reset", true);
+          console.log('clicked')
+          localStorage.setItem("auth", "true");
+          this.$router.push({ name: "Login" });
+        })
+        .catch(error => {
+          if (error.response.status === 422) {
+            this.errors = error.response.data.errors;
+          }
+        });
+    },
+        close() {
+            this.$parent.LoginTrue = false
+        }   
+  }
 }
 </script>
